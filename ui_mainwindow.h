@@ -16,6 +16,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -34,6 +35,13 @@ public:
     QPushButton *local_mode_button;
     QLabel *username_label;
     QLabel *password_label;
+    QWidget *page;
+    QLineEdit *username_creation;
+    QLineEdit *password_creation;
+    QPushButton *submit;
+    QPushButton *back_to_login_page;
+    QLabel *username_label_2;
+    QLabel *password_label_2;
     QWidget *local_mode_page;
     QLineEdit *query_field;
     QPushButton *insert_button;
@@ -42,6 +50,12 @@ public:
     QPushButton *select_button;
     QPushButton *select_all_button;
     QPushButton *deletion_button;
+    QPushButton *send_query_button;
+    QWidget *creation_db_page;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QRadioButton *radioButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -74,31 +88,70 @@ public:
         password_label->setObjectName(QStringLiteral("password_label"));
         password_label->setGeometry(QRect(350, 210, 51, 16));
         stackedWidget->addWidget(connexion_page);
+        page = new QWidget();
+        page->setObjectName(QStringLiteral("page"));
+        username_creation = new QLineEdit(page);
+        username_creation->setObjectName(QStringLiteral("username_creation"));
+        username_creation->setGeometry(QRect(440, 140, 171, 21));
+        password_creation = new QLineEdit(page);
+        password_creation->setObjectName(QStringLiteral("password_creation"));
+        password_creation->setGeometry(QRect(440, 180, 171, 20));
+        submit = new QPushButton(page);
+        submit->setObjectName(QStringLiteral("submit"));
+        submit->setGeometry(QRect(490, 220, 75, 23));
+        back_to_login_page = new QPushButton(page);
+        back_to_login_page->setObjectName(QStringLiteral("back_to_login_page"));
+        back_to_login_page->setGeometry(QRect(440, 270, 171, 51));
+        username_label_2 = new QLabel(page);
+        username_label_2->setObjectName(QStringLiteral("username_label_2"));
+        username_label_2->setGeometry(QRect(370, 140, 51, 20));
+        password_label_2 = new QLabel(page);
+        password_label_2->setObjectName(QStringLiteral("password_label_2"));
+        password_label_2->setGeometry(QRect(370, 180, 51, 20));
+        stackedWidget->addWidget(page);
         local_mode_page = new QWidget();
         local_mode_page->setObjectName(QStringLiteral("local_mode_page"));
         query_field = new QLineEdit(local_mode_page);
         query_field->setObjectName(QStringLiteral("query_field"));
-        query_field->setGeometry(QRect(200, 460, 631, 31));
+        query_field->setGeometry(QRect(140, 410, 781, 31));
         insert_button = new QPushButton(local_mode_page);
         insert_button->setObjectName(QStringLiteral("insert_button"));
-        insert_button->setGeometry(QRect(470, 500, 81, 31));
+        insert_button->setGeometry(QRect(420, 450, 81, 31));
         update_button = new QPushButton(local_mode_page);
         update_button->setObjectName(QStringLiteral("update_button"));
-        update_button->setGeometry(QRect(610, 500, 91, 31));
+        update_button->setGeometry(QRect(560, 450, 91, 31));
         delete_button = new QPushButton(local_mode_page);
         delete_button->setObjectName(QStringLiteral("delete_button"));
-        delete_button->setGeometry(QRect(760, 500, 81, 31));
+        delete_button->setGeometry(QRect(710, 450, 81, 31));
         select_button = new QPushButton(local_mode_page);
         select_button->setObjectName(QStringLiteral("select_button"));
-        select_button->setGeometry(QRect(330, 500, 81, 31));
+        select_button->setGeometry(QRect(270, 450, 81, 31));
         select_all_button = new QPushButton(local_mode_page);
         select_all_button->setObjectName(QStringLiteral("select_all_button"));
-        select_all_button->setGeometry(QRect(190, 500, 81, 31));
+        select_all_button->setGeometry(QRect(140, 450, 81, 31));
         select_all_button->setStyleSheet(QStringLiteral("<html><bold>select*</bold></html>"));
         deletion_button = new QPushButton(local_mode_page);
         deletion_button->setObjectName(QStringLiteral("deletion_button"));
-        deletion_button->setGeometry(QRect(860, 460, 81, 31));
+        deletion_button->setGeometry(QRect(840, 450, 81, 31));
+        send_query_button = new QPushButton(local_mode_page);
+        send_query_button->setObjectName(QStringLiteral("send_query_button"));
+        send_query_button->setGeometry(QRect(500, 510, 81, 31));
         stackedWidget->addWidget(local_mode_page);
+        creation_db_page = new QWidget();
+        creation_db_page->setObjectName(QStringLiteral("creation_db_page"));
+        pushButton = new QPushButton(creation_db_page);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(660, 480, 75, 23));
+        pushButton_2 = new QPushButton(creation_db_page);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(490, 490, 75, 23));
+        pushButton_3 = new QPushButton(creation_db_page);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(380, 340, 75, 23));
+        radioButton = new QRadioButton(creation_db_page);
+        radioButton->setObjectName(QStringLiteral("radioButton"));
+        radioButton->setGeometry(QRect(280, 280, 82, 17));
+        stackedWidget->addWidget(creation_db_page);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -113,7 +166,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -128,12 +181,21 @@ public:
         local_mode_button->setText(QApplication::translate("MainWindow", "Mode Local", nullptr));
         username_label->setText(QApplication::translate("MainWindow", "Username", nullptr));
         password_label->setText(QApplication::translate("MainWindow", "Password", nullptr));
+        submit->setText(QApplication::translate("MainWindow", "Soumettre", nullptr));
+        back_to_login_page->setText(QApplication::translate("MainWindow", "Back at login page", nullptr));
+        username_label_2->setText(QApplication::translate("MainWindow", "Username", nullptr));
+        password_label_2->setText(QApplication::translate("MainWindow", "Password", nullptr));
         insert_button->setText(QApplication::translate("MainWindow", "Insert", nullptr));
         update_button->setText(QApplication::translate("MainWindow", "Update", nullptr));
         delete_button->setText(QApplication::translate("MainWindow", "Delete", nullptr));
         select_button->setText(QApplication::translate("MainWindow", "Select", nullptr));
         select_all_button->setText(QApplication::translate("MainWindow", "Select *", nullptr));
         deletion_button->setText(QApplication::translate("MainWindow", "Delete field", nullptr));
+        send_query_button->setText(QApplication::translate("MainWindow", "Send Query", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        radioButton->setText(QApplication::translate("MainWindow", "RadioButton", nullptr));
     } // retranslateUi
 
 };
